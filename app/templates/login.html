@@ -1,39 +1,41 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 
 {% block content%}
-<div class="col-md-4 col-md-off-set-3">
-    <h3>Login</h3>
-    <form action="" method="post">
-        {{ form.csrf_token }}
+<div class="col-md-6 col-md-offset-3">
+    <div class="text-center">
+        <h3>Login</h3>
+    </div>
+        <div class="box">
+            <form action="" method="POST">
+                {{ form.csrf_token }}   
 
-        <div class="form-group">
-            <label">Username</label>
-            {{form.username(class="form-control", placeholder="Informe o usuário")}}
+                <div class="form-group">
+                    <label>Username</label>
+                    {{ form.username(class="form-control",
+                    placeholder="Nome de Usuario") }}
+                    
+                </div>
 
-        </div>
-        <div class="form-group">
-            <label">Password</label>
-            {{form.password(class="form-control")}}
-        </div>
-        <div class="checkbox">
-            <label">
-                {{ form.remember_me }} Remember 
-            </label>
-        </div>
-    </form>
-    <br>
-    <button type="submit", class="btn btn-primary">Submit</button>
+                <div class="form-group">
+                    <label>Password</label>
+                    {{ form.password(class="form-control") }}
+                </div>
+                
+                <div class="checkbox">
+                    <label>
+                        {{ form.remember_me }} Lembrar-me
+                    </label>
+                </div>
+                <div>
+                    <br>
+                    <button type="submit" class="btn btn-dark">Enviar</button>
+                </div>
+            </form>
+
+
+
+
+        </div>  
+    </dir>  
 </div>
-    
-{% endblock%}
-</body>
-</html>
+{% endblock %}

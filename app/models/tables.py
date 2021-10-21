@@ -1,4 +1,5 @@
-from app import db
+from app import db, login_manager
+
 
 class User(db.Model):
     __tablename__ = "users"
@@ -8,6 +9,27 @@ class User(db.Model):
     password = db.Column(db.String)
     name = db.Column(db.String)
     email = db.Column(db.String, unique=True)
+
+
+    @property
+    def is_authenticated(self):
+        return True
+    
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+    
+    @login_manager.user_loader
+    def load_user(user_id):
+        return str(user_id)
+    
+    def get_id(self):
+        return str(self.id)
 
     def __init__(self, username, password, name, email):
         self.username = username
